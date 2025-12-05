@@ -1,0 +1,28 @@
+pipeline {
+  agent none
+   stages {
+     stage ('build') {
+       steps {
+        sh '''
+         sudo apt update
+        '''
+}
+}
+    stage ('test') {
+      steps {
+       sh '''
+        pwd
+       '''
+}
+}
+     stage ('deploy') {
+      steps {
+       sh '''
+        sudo apt install tree
+       '''
+}
+}
+}
+}
+ 
+
