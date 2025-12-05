@@ -2,22 +2,28 @@ pipeline {
   agent none
    stages {
      stage ('build') {
+      agent {label 'master'}
        steps {
         sh '''
+         echo "this runs on master node"
          sudo apt update
         '''
 }
 }
     stage ('test') {
+    agent {label 'slave1'}
       steps {
        sh '''
+        echo "this runs on slave1"
         pwd
        '''
 }
 }
      stage ('deploy') {
+     agent {label 'slave2'}
       steps {
        sh '''
+        echo "this runs on slave2"
         sudo apt install tree
        '''
 }
